@@ -89,7 +89,7 @@
       <service name="gestionSockets">
         <interface.java interface="euge.soa.example.interfaces.gestionSocket"/>
       </service>
-      <reference name="media_con_servicio.media_con_servicio">
+      <reference name="servicioPersona">
         <interface.java interface="interfaces.example.soa.euge.ServicioPersona"/>
       </reference>
     </componentType>
@@ -179,7 +179,7 @@
     <target.uri>ContextoSpring/gestionSockets</target.uri>
   </wire>
   <wire>
-    <source.uri>ContextoSpring/media_con_servicio.media_con_servicio</source.uri>
+    <source.uri>ContextoSpring/servicioPersona</source.uri>
     <target.uri>media_con_servicio/media_con_servicio</target.uri>
   </wire>
   <wire>

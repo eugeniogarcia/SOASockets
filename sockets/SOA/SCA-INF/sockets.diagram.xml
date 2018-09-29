@@ -87,11 +87,11 @@
         </dgm:operations>
     </dgm:gService>
     <dgm:gReference name="escribeArchivo">
-        <dgm:body borderWidth="2" arcRad="20" X="997" Y="503" width="136" height="84">
+        <dgm:body borderWidth="2" arcRad="20" X="866" Y="503" width="136" height="84">
             <dgm:borderColor r="153" g="153" b="153"/>
             <dgm:bgColor r="255" g="255" b="255"/>
         </dgm:body>
-        <dgm:shadow arcRad="20" X="987" Y="496" width="156" height="98">
+        <dgm:shadow arcRad="20" X="856" Y="496" width="156" height="98">
             <dgm:bgColor r="196" g="228" b="240"/>
         </dgm:shadow>
         <dgm:inputPort name="escribeArchivo" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/file/sockets/sockets/escribeArchivo#wsdl.interface(Write_ptt)"/>
@@ -101,11 +101,11 @@
         </dgm:operations>
     </dgm:gReference>
     <dgm:gReference name="escribeNotificacion">
-        <dgm:body borderWidth="2" arcRad="20" X="997" Y="157" width="136" height="84">
+        <dgm:body borderWidth="2" arcRad="20" X="866" Y="157" width="136" height="84">
             <dgm:borderColor r="153" g="153" b="153"/>
             <dgm:bgColor r="255" g="255" b="255"/>
         </dgm:body>
-        <dgm:shadow arcRad="20" X="987" Y="150" width="156" height="98">
+        <dgm:shadow arcRad="20" X="856" Y="150" width="156" height="98">
             <dgm:bgColor r="196" g="228" b="240"/>
         </dgm:shadow>
         <dgm:inputPort name="escribeNotificacion" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/file/sockets/sockets/escribeNotificacion#wsdl.interface(Write_ptt)"/>
@@ -115,11 +115,11 @@
         </dgm:operations>
     </dgm:gReference>
     <dgm:gReference name="servidorSocket">
-        <dgm:body borderWidth="2" arcRad="20" X="997" Y="41" width="136" height="84">
+        <dgm:body borderWidth="2" arcRad="20" X="866" Y="41" width="136" height="84">
             <dgm:borderColor r="153" g="153" b="153"/>
             <dgm:bgColor r="255" g="255" b="255"/>
         </dgm:body>
-        <dgm:shadow arcRad="20" X="987" Y="34" width="156" height="98">
+        <dgm:shadow arcRad="20" X="856" Y="34" width="156" height="98">
             <dgm:bgColor r="196" g="228" b="240"/>
         </dgm:shadow>
         <dgm:inputPort name="servidorSocket" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/socket/sockets/sockets/servidorSocket#wsdl.interface(OutboundRequestReply_ptt)"/>
@@ -129,12 +129,12 @@
         </dgm:operations>
     </dgm:gReference>
     <dgm:gComponent name="socket">
-        <dgm:body borderWidth="2" arcRad="20" X="513" Y="515" width="130" height="61">
+        <dgm:body borderWidth="2" arcRad="20" X="469" Y="515" width="130" height="61">
             <dgm:borderColor r="69" g="113" b="140"/>
             <dgm:lightBgColor r="166" g="208" b="230"/>
             <dgm:darkBgColor r="99" g="162" b="201"/>
         </dgm:body>
-        <dgm:shadow arcRad="20" X="503" Y="508" width="150" height="77">
+        <dgm:shadow arcRad="20" X="459" Y="508" width="150" height="77">
             <dgm:bgColor r="196" g="228" b="240"/>
         </dgm:shadow>
         <dgm:inputPort name="socket_client" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/socket/sockets/sockets/entrada#wsdl.interface(InboundRequestReply_ptt)"/>
@@ -142,12 +142,12 @@
         <dgm:nodeIcon URI="/oracle/tip/tools/ide/bpel/shared/plugins/resources/images/soa/process_20x20.png" X="10" Y="4" width="20" height="20"/>
     </dgm:gComponent>
     <dgm:gComponent name="mediador">
-        <dgm:body borderWidth="2" arcRad="20" X="270" Y="429" width="130" height="61">
+        <dgm:body borderWidth="2" arcRad="20" X="226" Y="429" width="130" height="61">
             <dgm:borderColor r="128" g="92" b="148"/>
             <dgm:lightBgColor r="208" g="169" b="227"/>
             <dgm:darkBgColor r="183" g="132" b="212"/>
         </dgm:body>
-        <dgm:shadow arcRad="20" X="260" Y="422" width="150" height="77">
+        <dgm:shadow arcRad="20" X="216" Y="422" width="150" height="77">
             <dgm:bgColor r="196" g="228" b="240"/>
         </dgm:shadow>
         <dgm:inputPort name="mediador" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/socket/sockets/sockets/soloEntrada#wsdl.interface(Receive_ptt)"/>
@@ -155,25 +155,25 @@
         <dgm:nodeIcon URI="/oracle/tip/tools/ide/mediator/resource/image/mediator_20x20.png" X="10" Y="4" width="20" height="20"/>
     </dgm:gComponent>
     <dgm:gComponent name="ContextoSpring">
-        <dgm:body borderWidth="2" arcRad="20" X="270" Y="183" width="130" height="61">
+        <dgm:body borderWidth="2" arcRad="20" X="226" Y="183" width="130" height="61">
             <dgm:borderColor r="134" g="135" b="142"/>
             <dgm:lightBgColor r="231" g="231" b="234"/>
             <dgm:darkBgColor r="192" g="194" b="203"/>
         </dgm:body>
-        <dgm:shadow arcRad="20" X="260" Y="176" width="150" height="77">
+        <dgm:shadow arcRad="20" X="216" Y="176" width="150" height="77">
             <dgm:bgColor r="196" g="228" b="240"/>
         </dgm:shadow>
         <dgm:inputPort name="gestionSockets" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="euge.soa.example.interfaces.gestionSocket"/>
-        <dgm:outputPort name="media_con_servicio.media_con_servicio" X="120" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="interfaces.example.soa.euge.ServicioPersona"/>
+        <dgm:outputPort name="servicioPersona" X="120" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="interfaces.example.soa.euge.ServicioPersona"/>
         <dgm:nodeIcon URI="/oracle/tip/tools/ide/spring/sca/images/springcomponenticon_dia.png" X="10" Y="4" width="20" height="20"/>
     </dgm:gComponent>
     <dgm:gComponent name="media_con_servicio">
-        <dgm:body borderWidth="2" arcRad="20" X="513" Y="203" width="130" height="86">
+        <dgm:body borderWidth="2" arcRad="20" X="469" Y="203" width="130" height="86">
             <dgm:borderColor r="128" g="92" b="148"/>
             <dgm:lightBgColor r="208" g="169" b="227"/>
             <dgm:darkBgColor r="183" g="132" b="212"/>
         </dgm:body>
-        <dgm:shadow arcRad="20" X="503" Y="196" width="150" height="102">
+        <dgm:shadow arcRad="20" X="459" Y="196" width="150" height="102">
             <dgm:bgColor r="196" g="228" b="240"/>
         </dgm:shadow>
         <dgm:inputPort name="media_con_servicio" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://interfaces.example.soa.euge/#wsdl.interface(servicioPersona)"/>
@@ -182,12 +182,12 @@
         <dgm:nodeIcon URI="/oracle/tip/tools/ide/mediator/resource/image/mediator_20x20.png" X="10" Y="4" width="20" height="20"/>
     </dgm:gComponent>
     <dgm:gComponent name="Notifica">
-        <dgm:body borderWidth="2" arcRad="20" X="755" Y="142" width="130" height="61">
+        <dgm:body borderWidth="2" arcRad="20" X="668" Y="142" width="130" height="61">
             <dgm:borderColor r="69" g="113" b="140"/>
             <dgm:lightBgColor r="166" g="208" b="230"/>
             <dgm:darkBgColor r="99" g="162" b="201"/>
         </dgm:body>
-        <dgm:shadow arcRad="20" X="745" Y="135" width="150" height="77">
+        <dgm:shadow arcRad="20" X="658" Y="135" width="150" height="77">
             <dgm:bgColor r="196" g="228" b="240"/>
         </dgm:shadow>
         <dgm:inputPort name="notifica_client" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://interfaces.example.soa.euge/#wsdl.interface(servicioPersona)"/>
@@ -195,24 +195,24 @@
         <dgm:nodeIcon URI="/oracle/tip/tools/ide/bpel/shared/plugins/resources/images/soa/process_20x20.png" X="10" Y="4" width="20" height="20"/>
     </dgm:gComponent>
     <dgm:gComponent name="checkPersona">
-        <dgm:body borderWidth="2" arcRad="20" X="755" Y="263" width="130" height="61">
+        <dgm:body borderWidth="2" arcRad="20" X="668" Y="263" width="130" height="61">
             <dgm:borderColor r="69" g="113" b="140"/>
             <dgm:lightBgColor r="166" g="208" b="230"/>
             <dgm:darkBgColor r="99" g="162" b="201"/>
         </dgm:body>
-        <dgm:shadow arcRad="20" X="745" Y="256" width="150" height="77">
+        <dgm:shadow arcRad="20" X="658" Y="256" width="150" height="77">
             <dgm:bgColor r="196" g="228" b="240"/>
         </dgm:shadow>
         <dgm:inputPort name="checkpersona_client" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://interfaces.example.soa.euge/#wsdl.interface(servicioPersona)"/>
         <dgm:nodeIcon URI="/oracle/tip/tools/ide/bpel/shared/plugins/resources/images/soa/process_20x20.png" X="10" Y="4" width="20" height="20"/>
     </dgm:gComponent>
     <dgm:gComponent name="enviaASocket">
-        <dgm:body borderWidth="2" arcRad="20" X="513" Y="26" width="130" height="61">
+        <dgm:body borderWidth="2" arcRad="20" X="469" Y="26" width="130" height="61">
             <dgm:borderColor r="69" g="113" b="140"/>
             <dgm:lightBgColor r="166" g="208" b="230"/>
             <dgm:darkBgColor r="99" g="162" b="201"/>
         </dgm:body>
-        <dgm:shadow arcRad="20" X="503" Y="19" width="150" height="77">
+        <dgm:shadow arcRad="20" X="459" Y="19" width="150" height="77">
             <dgm:bgColor r="196" g="228" b="240"/>
         </dgm:shadow>
         <dgm:inputPort name="enviaAlSocket" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://interfaces.example.soa.euge/#wsdl.interface(gestionSocket)"/>
@@ -220,83 +220,83 @@
         <dgm:nodeIcon URI="/oracle/tip/tools/ide/bpel/shared/plugins/resources/images/soa/process_20x20.png" X="10" Y="4" width="20" height="20"/>
     </dgm:gComponent>
     <dgm:gWireLink source="entrada" target="socket/socket_client" width="2">
-        <dgm:gSegment X1="168" Y1="690" X2="449" Y2="690"/>
-        <dgm:gSegment X1="449" Y1="690" X2="449" Y2="540"/>
-        <dgm:gSegment X1="449" Y1="540" X2="503" Y2="540"/>
+        <dgm:gSegment X1="168" Y1="690" X2="405" Y2="690"/>
+        <dgm:gSegment X1="405" Y1="690" X2="405" Y2="540"/>
+        <dgm:gSegment X1="405" Y1="540" X2="459" Y2="540"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>
     <dgm:gWireLink source="socket/escribeArchivo" target="escribeArchivo" width="2">
-        <dgm:gSegment X1="653" Y1="540" X2="677" Y2="540"/>
-        <dgm:gSegment X1="677" Y1="540" X2="677" Y2="513"/>
-        <dgm:gSegment X1="677" Y1="513" X2="987" Y2="513"/>
+        <dgm:gSegment X1="609" Y1="540" X2="634" Y2="540"/>
+        <dgm:gSegment X1="634" Y1="540" X2="634" Y2="513"/>
+        <dgm:gSegment X1="634" Y1="513" X2="856" Y2="513"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>
     <dgm:gWireLink source="complejo" target="socket/socket_client" width="2">
-        <dgm:gSegment X1="168" Y1="572" X2="434" Y2="572"/>
-        <dgm:gSegment X1="434" Y1="572" X2="434" Y2="540"/>
-        <dgm:gSegment X1="434" Y1="540" X2="503" Y2="540"/>
+        <dgm:gSegment X1="168" Y1="572" X2="390" Y2="572"/>
+        <dgm:gSegment X1="390" Y1="572" X2="390" Y2="540"/>
+        <dgm:gSegment X1="390" Y1="540" X2="459" Y2="540"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>
     <dgm:gWireLink source="mediador/socket.socket_client" target="socket/socket_client" width="2">
-        <dgm:gSegment X1="410" Y1="454" X2="464" Y2="454"/>
-        <dgm:gSegment X1="464" Y1="454" X2="464" Y2="540"/>
-        <dgm:gSegment X1="464" Y1="540" X2="503" Y2="540"/>
+        <dgm:gSegment X1="366" Y1="454" X2="420" Y2="454"/>
+        <dgm:gSegment X1="420" Y1="454" X2="420" Y2="540"/>
+        <dgm:gSegment X1="420" Y1="540" X2="459" Y2="540"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>
     <dgm:gWireLink source="soloEntrada" target="mediador/mediador" width="2">
-        <dgm:gSegment X1="168" Y1="454" X2="260" Y2="454"/>
+        <dgm:gSegment X1="168" Y1="454" X2="216" Y2="454"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>
     <dgm:gWireLink source="javaScript" target="socket/socket_client" width="2">
-        <dgm:gSegment X1="168" Y1="336" X2="479" Y2="336"/>
-        <dgm:gSegment X1="479" Y1="336" X2="479" Y2="540"/>
-        <dgm:gSegment X1="479" Y1="540" X2="503" Y2="540"/>
+        <dgm:gSegment X1="168" Y1="336" X2="435" Y2="336"/>
+        <dgm:gSegment X1="435" Y1="336" X2="435" Y2="540"/>
+        <dgm:gSegment X1="435" Y1="540" X2="459" Y2="540"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>
     <dgm:gWireLink source="gestionSockets" target="ContextoSpring/gestionSockets" width="2">
-        <dgm:gSegment X1="168" Y1="208" X2="260" Y2="208"/>
+        <dgm:gSegment X1="168" Y1="208" X2="216" Y2="208"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>
-    <dgm:gWireLink source="ContextoSpring/media_con_servicio.media_con_servicio" target="media_con_servicio/media_con_servicio" width="2">
-        <dgm:gSegment X1="410" Y1="208" X2="434" Y2="208"/>
-        <dgm:gSegment X1="434" Y1="208" X2="434" Y2="228"/>
-        <dgm:gSegment X1="434" Y1="228" X2="503" Y2="228"/>
+    <dgm:gWireLink source="ContextoSpring/servicioPersona" target="media_con_servicio/media_con_servicio" width="2">
+        <dgm:gSegment X1="366" Y1="208" X2="390" Y2="208"/>
+        <dgm:gSegment X1="390" Y1="208" X2="390" Y2="228"/>
+        <dgm:gSegment X1="390" Y1="228" X2="459" Y2="228"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>
     <dgm:gWireLink source="media_con_servicio/Notifica.notifica_client" target="Notifica/notifica_client" width="2">
-        <dgm:gSegment X1="653" Y1="228" X2="677" Y2="228"/>
-        <dgm:gSegment X1="677" Y1="228" X2="677" Y2="167"/>
-        <dgm:gSegment X1="677" Y1="167" X2="745" Y2="167"/>
+        <dgm:gSegment X1="609" Y1="228" X2="634" Y2="228"/>
+        <dgm:gSegment X1="634" Y1="228" X2="634" Y2="167"/>
+        <dgm:gSegment X1="634" Y1="167" X2="658" Y2="167"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>
     <dgm:gWireLink source="media_con_servicio/checkPersona.checkpersona_client" target="checkPersona/checkpersona_client" width="2">
-        <dgm:gSegment X1="653" Y1="253" X2="677" Y2="253"/>
-        <dgm:gSegment X1="677" Y1="253" X2="677" Y2="288"/>
-        <dgm:gSegment X1="677" Y1="288" X2="745" Y2="288"/>
+        <dgm:gSegment X1="609" Y1="253" X2="634" Y2="253"/>
+        <dgm:gSegment X1="634" Y1="253" X2="634" Y2="288"/>
+        <dgm:gSegment X1="634" Y1="288" X2="658" Y2="288"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>
     <dgm:gWireLink source="Notifica/escribeNotificacion" target="escribeNotificacion" width="2">
-        <dgm:gSegment X1="895" Y1="167" X2="987" Y2="167"/>
+        <dgm:gSegment X1="808" Y1="167" X2="856" Y2="167"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>
     <dgm:gWireLink source="enviaAlSocket_ep" target="enviaASocket/enviaAlSocket" width="2">
-        <dgm:gSegment X1="168" Y1="51" X2="503" Y2="51"/>
+        <dgm:gSegment X1="168" Y1="51" X2="459" Y2="51"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>
     <dgm:gWireLink source="enviaASocket/servidorSocket" target="servidorSocket" width="2">
-        <dgm:gSegment X1="653" Y1="51" X2="987" Y2="51"/>
+        <dgm:gSegment X1="609" Y1="51" X2="856" Y2="51"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>
