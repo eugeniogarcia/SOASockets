@@ -90,7 +90,7 @@
         <interface.java interface="euge.soa.example.interfaces.gestionSocket"/>
       </service>
       <reference name="servicioPersona">
-        <interface.java interface="interfaces.example.soa.euge.ServicioPersona"/>
+        <interface.java interface="euge.soa.example.interfaces.servicioPersona"/>
       </reference>
     </componentType>
   </component>
@@ -127,10 +127,10 @@
       </service>
     </componentType>
   </component>
-  <component name="enviaASocket" version="2.0">
-    <implementation.bpel src="BPEL/enviaASocket.bpel"/>
+  <component name="procesaEnvio" version="2.0">
+    <implementation.bpel src="BPEL/procesaEnvio.bpel"/>
     <componentType>
-      <service name="enviaAlSocket" ui:wsdlLocation="WSDLs/enviaSocketWrapper.wsdl">
+      <service name="procesaenvio_client" ui:wsdlLocation="WSDLs/enviaSocketWrapper.wsdl">
         <interface.wsdl interface="http://interfaces.example.soa.euge/#wsdl.interface(gestionSocket)"/>
       </service>
       <reference name="servidorSocket" ui:wsdlLocation="WSDLs/servidorSocket.wsdl">
@@ -196,10 +196,10 @@
   </wire>
   <wire>
     <source.uri>enviaAlSocket_ep</source.uri>
-    <target.uri>enviaASocket/enviaAlSocket</target.uri>
+    <target.uri>procesaEnvio/procesaenvio_client</target.uri>
   </wire>
   <wire>
-    <source.uri>enviaASocket/servidorSocket</source.uri>
+    <source.uri>procesaEnvio/servidorSocket</source.uri>
     <target.uri>servidorSocket</target.uri>
   </wire>
 </composite>

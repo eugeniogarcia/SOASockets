@@ -79,6 +79,7 @@
    <value n="defaultPackage" v="sockets"/>
    <hash n="oracle.ide.model.TechnologyScopeConfiguration">
       <list n="technologyScope">
+         <string v="JAVASCRIPT"/>
          <string v="Java"/>
          <string v="SOA"/>
          <string v="Spring"/>

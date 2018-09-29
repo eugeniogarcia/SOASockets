@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
@@ -27,26 +26,35 @@ public class beanPersonas implements gestionSocket, Runnable{
 		this.servidor=servidor;
 		this.PORT=puerto;
 		this.serverPORT=puertoServidor;
+	}
 
+	private ServerSocket serverSocket;
+	private Thread worker;
+	private boolean para=false;
+
+	public void arranca() throws IOException {
+		para=false;
+		serverSocket = new ServerSocket(this.serverPORT);
 		//Activa un servidor Socket que escucha peticiones
-		new Thread(this).start();
+		worker=new Thread(this);
+		worker.start();
+	}
+
+	public void para() throws IOException, InterruptedException  {
+		para=true;
+		serverSocket.close();
 	}
 
 	@Override
 	public void run() {
 		try {
 			//Crea un servidor en el puerto this.serverPORT con timeout 10000
-			final int serverPort = this.serverPORT;
-			final ServerSocket serverSocket = new ServerSocket(serverPort);
 			serverSocket.setSoTimeout(1000000);
-			while(true) {
+			while(!this.para) {
 				System.out.println("Esperando que alguien se conecte en el puerto " + serverSocket.getLocalPort() + "...");
 				//Espera a que llegue una petición
 				final Socket server = serverSocket.accept();
 				System.out.println("Alguien se conecto " + server.getRemoteSocketAddress());
-
-				//Esto nos servira para contestar al cliente
-				final PrintWriter toClient = new PrintWriter(server.getOutputStream(),true);
 
 				//Esto nos servira para leer desde el cliente
 				final BufferedReader fromClient = new BufferedReader(new InputStreamReader(server.getInputStream()));
@@ -58,10 +66,10 @@ public class beanPersonas implements gestionSocket, Runnable{
 					per = construye(line);
 					servicio.notifica(per);
 					//Enviamos este mensaje al cliente
-					toClient.println("Gracias por contactar con nosotros " + server.getLocalSocketAddress() + "\nAdios!");
+					respondeCliente("Gracias por contactar con nosotros " + server.getLocalSocketAddress() + "\nAdios!",server.getOutputStream());
 				} catch (Exception e) {
 					//Enviamos este mensaje al cliente
-					toClient.println("Error: "+e.getMessage()+" from " + server.getLocalSocketAddress() + "\n");
+					respondeCliente("Error: "+e.getMessage()+" from " + server.getLocalSocketAddress() ,server.getOutputStream());
 				}
 			}
 		}
@@ -71,6 +79,14 @@ public class beanPersonas implements gestionSocket, Runnable{
 		catch(final IOException e){
 			e.printStackTrace();
 		}
+	}
+
+	private void respondeCliente(String mensaje,OutputStream salida) throws IOException {
+		byte[] b = (mensaje+";").getBytes();
+		for (int i = 0; i < b.length; i++) {
+			salida.write(b[i]);
+		}
+		salida.flush();
 	}
 
 	@Override

@@ -1,5 +1,7 @@
 package euge.com.example.demo;
 
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -40,13 +42,18 @@ public class ClienteSocketApplication{
 		return new servicioMock();
 	}
 
-	@Value("${servidor}")
-	private static String servidor="192.168.1.138";
 	private static int PORT = 12116;
 
 	@Bean
-	public beanPersonas beanAProbar() {
-		return new beanPersonas(servicio(), servidor, PORT, PORT);
+	public beanPersonas beanAProbar(@Value("${servidor}") String servidor) {
+		beanPersonas miServ=new beanPersonas(servicio(), servidor, PORT, PORT);
+		try {
+			miServ.arranca();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return miServ;
 	}
 
 	@Bean

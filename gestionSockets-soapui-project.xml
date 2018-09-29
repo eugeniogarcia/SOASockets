@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="2694f0f1-0966-45df-824d-7915122d202d" activeEnvironment="Default" name="gestionSockets" soapui-version="5.4.0" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="d7f89bec-5a92-47b6-936b-230ab376b3e1" wsaVersion="NONE" name="gestionSocketBinding" type="wsdl" bindingName="{http://interfaces.example.soa.euge/}gestionSocketBinding" soapVersion="1_1" anonymous="optional" definition="http://Retaco:7101/soa-infra/services/default/sockets/gestionSockets?WSDL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://Retaco:7101/soa-infra/services/default/sockets/gestionSockets?WSDL"><con:part><con:url>http://Retaco:7101/soa-infra/services/default/sockets/gestionSockets?WSDL</con:url><con:content><![CDATA[<wsdl:definitions name="gestionSocket" targetNamespace="http://interfaces.example.soa.euge/" xmlns:tns="http://interfaces.example.soa.euge/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>
+    <abstractWSDL>http://Retaco:7101/soa-infra/services/default/sockets!1.0/WSDLs/gestionSocket.wsdl</abstractWSDL>
+  </wsdl:documentation>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://interfaces.example.soa.euge/types" xmlns:ns0="http://interfaces.example.soa.euge/types">
+      <xsd:complexType name="estado">
+        <xsd:sequence>
+          <xsd:element name="codigo" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="pers" type="ns0:persona" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="persona">
+        <xsd:sequence>
+          <xsd:element name="DNI" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="apellido" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="edad" type="xsd:string" minOccurs="0"/>
+          <xsd:element name="nombre" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+    <xsd:schema targetNamespace="http://interfaces.example.soa.euge/" xmlns:ns1="http://interfaces.example.soa.euge/types">
+      <xsd:import namespace="http://interfaces.example.soa.euge/types"/>
+      <xsd:complexType name="envia">
+        <xsd:sequence>
+          <xsd:element name="arg0" type="ns1:persona"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="envia" type="tns:envia"/>
+      <xsd:complexType name="enviaResponse">
+        <xsd:sequence>
+          <xsd:element name="return" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="enviaResponse" type="tns:enviaResponse"/>
+      <xsd:complexType name="procesa">
+        <xsd:sequence>
+          <xsd:element name="arg0" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="procesa" type="tns:procesa"/>
+      <xsd:complexType name="procesaResponse">
+        <xsd:sequence>
+          <xsd:element name="return" type="ns1:estado"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="procesaResponse" type="tns:procesaResponse"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="enviaInput">
+    <wsdl:part name="parameters" element="tns:envia"/>
+  </wsdl:message>
+  <wsdl:message name="enviaOutput">
+    <wsdl:part name="parameters" element="tns:enviaResponse"/>
+  </wsdl:message>
+  <wsdl:message name="procesaInput">
+    <wsdl:part name="parameters" element="tns:procesa"/>
+  </wsdl:message>
+  <wsdl:message name="procesaOutput">
+    <wsdl:part name="parameters" element="tns:procesaResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="gestionSocket">
+    <wsdl:operation name="envia">
+      <wsdl:input message="tns:enviaInput" ns1:Action="" xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl"/>
+      <wsdl:output message="tns:enviaOutput" ns1:Action="" xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl"/>
+    </wsdl:operation>
+    <wsdl:operation name="procesa">
+      <wsdl:input message="tns:procesaInput" ns1:Action="" xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl"/>
+      <wsdl:output message="tns:procesaOutput" ns1:Action="" xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="gestionSocketBinding" type="tns:gestionSocket">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="envia">
+      <soap:operation style="document" soapAction="envia"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="procesa">
+      <soap:operation style="document" soapAction="procesa"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="gestionSockets">
+    <wsdl:port name="gestionSocket_pt" binding="tns:gestionSocketBinding">
+      <soap:address location="http://Retaco:7101/soa-infra/services/default/sockets/gestionSockets"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://Retaco:7101/soa-infra/services/default/sockets/gestionSockets</con:endpoint></con:endpoints><con:operation id="038599f3-93e7-4638-8ae4-cac6f41708c6" isOneWay="false" action="envia" name="envia" bindingOperationName="envia" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="75f78e1b-b61e-4c4c-9ef8-065fbecb367d" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://Retaco:7101/soa-infra/services/default/sockets/gestionSockets</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:int="http://interfaces.example.soa.euge/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <int:envia>\r
+         <arg0>\r
+            <DNI>09781214G</DNI>
+            <apellido>Garcia</apellido>
+            <edad>48</edad>
+            <nombre>Eugenio</nombre>
+         </arg0>\r
+      </int:envia>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="envia"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="298dd92c-ac7c-4aa3-b4f6-ed3962a51c6d" isOneWay="false" action="procesa" name="procesa" bindingOperationName="procesa" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="ecf7cbff-005e-4bc7-939f-d8f1b6e21a4f" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://Retaco:7101/soa-infra/services/default/sockets/gestionSockets</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:int="http://interfaces.example.soa.euge/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <int:procesa>\r
+         <arg0>09781214G</arg0>\r
+      </int:procesa>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="procesa"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

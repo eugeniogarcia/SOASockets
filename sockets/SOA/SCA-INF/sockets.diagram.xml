@@ -164,7 +164,7 @@
             <dgm:bgColor r="196" g="228" b="240"/>
         </dgm:shadow>
         <dgm:inputPort name="gestionSockets" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="euge.soa.example.interfaces.gestionSocket"/>
-        <dgm:outputPort name="servicioPersona" X="120" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="interfaces.example.soa.euge.ServicioPersona"/>
+        <dgm:outputPort name="servicioPersona" X="120" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="euge.soa.example.interfaces.servicioPersona"/>
         <dgm:nodeIcon URI="/oracle/tip/tools/ide/spring/sca/images/springcomponenticon_dia.png" X="10" Y="4" width="20" height="20"/>
     </dgm:gComponent>
     <dgm:gComponent name="media_con_servicio">
@@ -206,7 +206,7 @@
         <dgm:inputPort name="checkpersona_client" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://interfaces.example.soa.euge/#wsdl.interface(servicioPersona)"/>
         <dgm:nodeIcon URI="/oracle/tip/tools/ide/bpel/shared/plugins/resources/images/soa/process_20x20.png" X="10" Y="4" width="20" height="20"/>
     </dgm:gComponent>
-    <dgm:gComponent name="enviaASocket">
+    <dgm:gComponent name="procesaEnvio">
         <dgm:body borderWidth="2" arcRad="20" X="469" Y="26" width="130" height="61">
             <dgm:borderColor r="69" g="113" b="140"/>
             <dgm:lightBgColor r="166" g="208" b="230"/>
@@ -215,7 +215,7 @@
         <dgm:shadow arcRad="20" X="459" Y="19" width="150" height="77">
             <dgm:bgColor r="196" g="228" b="240"/>
         </dgm:shadow>
-        <dgm:inputPort name="enviaAlSocket" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://interfaces.example.soa.euge/#wsdl.interface(gestionSocket)"/>
+        <dgm:inputPort name="procesaenvio_client" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://interfaces.example.soa.euge/#wsdl.interface(gestionSocket)"/>
         <dgm:outputPort name="servidorSocket" X="120" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/pcbpel/adapter/socket/sockets/sockets/servidorSocket#wsdl.interface(OutboundRequestReply_ptt)"/>
         <dgm:nodeIcon URI="/oracle/tip/tools/ide/bpel/shared/plugins/resources/images/soa/process_20x20.png" X="10" Y="4" width="20" height="20"/>
     </dgm:gComponent>
@@ -290,12 +290,12 @@
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>
-    <dgm:gWireLink source="enviaAlSocket_ep" target="enviaASocket/enviaAlSocket" width="2">
+    <dgm:gWireLink source="enviaAlSocket_ep" target="procesaEnvio/procesaenvio_client" width="2">
         <dgm:gSegment X1="168" Y1="51" X2="459" Y2="51"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>
-    <dgm:gWireLink source="enviaASocket/servidorSocket" target="servidorSocket" width="2">
+    <dgm:gWireLink source="procesaEnvio/servidorSocket" target="servidorSocket" width="2">
         <dgm:gSegment X1="609" Y1="51" X2="856" Y2="51"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>

@@ -4,9 +4,9 @@
      xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/socket/sockets/sockets/servidorSocket"
      xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/"
      xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
-     xmlns:msg_request="http://euge.prueba.in/persona"
-     xmlns:msg_reply="http://shrikworld.blogspot.in/response"
      xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:msg_request="http://euge.prueba.in/persona"
+     xmlns:msg_reply="http://euge.prueba/response"
     >
   <plt:partnerLinkType name="OutboundRequestReply_plt" >
     <plt:role name="OutboundRequestReply_role" >
@@ -18,7 +18,7 @@
         <import namespace="http://euge.prueba.in/persona" schemaLocation="../Schemas/persona.xsd" />
       </schema>
       <schema xmlns="http://www.w3.org/2001/XMLSchema" >
-        <import namespace="http://shrikworld.blogspot.in/response" schemaLocation="../Schemas/respuesta.xsd" />
+        <import namespace="http://euge.prueba/response" schemaLocation="../Schemas/respuesta_nativa.xsd" />
       </schema>
     </wsdl:types>
     <wsdl:message name="Persona_msg_requsest">
