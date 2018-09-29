@@ -1,0 +1,12 @@
+<adapter-config name="entrada" adapter="socket" wsdlLocation="../WSDLs/entrada.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/socket/miSocket"/>
+  <endpoint-activation portType="InboundRequestReply_ptt" operation="InboundRequestReply" UITransmissionPrimitive="InboundRequestReply">
+    <activation-spec className="oracle.tip.adapter.socket.SocketActivationSpec">
+      <property name="ReplyXslt" value="../Transformations/reply.xsl"/>
+      <property name="Xslt" value="../Transformations/request.xsl"/>
+      <property name="TransMode" value="XSLT"/>
+    </activation-spec>
+  </endpoint-activation>
+
+</adapter-config>

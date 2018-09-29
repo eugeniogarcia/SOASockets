@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:nxsd="http://xmlns.oracle.com/pcbpel/nxsd"
+            xmlns:tns="http://shrikworld.blogspot.in/ReadEmpDetails"
+            targetNamespace="http://shrikworld.blogspot.in/ReadEmpDetails"
+            elementFormDefault="qualified" attributeFormDefault="unqualified"
+            nxsd:version="NXSD" nxsd:stream="chars" nxsd:encoding="US-ASCII">
+  <xsd:element name="EmpDetails">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="usuario" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy=","/>
+        <xsd:element name="contrasena" type="xsd:string" nxsd:style="terminated" nxsd:terminatedBy=";"/>
+        <xsd:element name="Emp" minOccurs="1" maxOccurs="unbounded" nxsd:style="array" nxsd:cellSeparatedBy="${eol}">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="FirstName" type="xsd:string" nxsd:style="fixedLength" nxsd:length="8"/>
+              <xsd:element name="LastName" type="xsd:string" nxsd:style="fixedLength" nxsd:length="8"/>
+              <xsd:element name="Age" type="xsd:int" nxsd:style="fixedLength" nxsd:length="2"/>
+              <xsd:element name="DOB" type="xsd:string" nxsd:style="fixedLength" nxsd:length="10"/>
+              <xsd:element name="Salary" type="xsd:int" nxsd:style="fixedLength" nxsd:length="3"/>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

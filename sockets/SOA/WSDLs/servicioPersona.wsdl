@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions
+     name="servicioPersona"
+     targetNamespace="http://interfaces.example.soa.euge/"
+     xmlns:tns="http://interfaces.example.soa.euge/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+     xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+     xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+    <wsdl:types>
+        <xsd:schema xmlns:ns0="http://interfaces.example.soa.euge/types" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             targetNamespace="http://interfaces.example.soa.euge/types">
+            <xsd:complexType name="estado">
+                <xsd:sequence>
+                    <xsd:element name="codigo" type="xsd:string" minOccurs="0"/>
+                    <xsd:element name="pers" type="ns0:persona" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="persona">
+                <xsd:sequence>
+                    <xsd:element name="DNI" type="xsd:string" minOccurs="0"/>
+                    <xsd:element name="apellido" type="xsd:string" minOccurs="0"/>
+                    <xsd:element name="edad" type="xsd:string" minOccurs="0"/>
+                    <xsd:element name="nombre" type="xsd:string" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:schema>
+        <xsd:schema targetNamespace="http://interfaces.example.soa.euge/" xmlns:tns="http://interfaces.example.soa.euge/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://interfaces.example.soa.euge/types">
+            <xsd:import namespace="http://interfaces.example.soa.euge/types"/>
+            <xsd:complexType name="notifica">
+                <xsd:sequence>
+                    <xsd:element name="arg0" type="ns1:persona"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="notifica" type="tns:notifica"/>
+            <xsd:complexType name="notificaResponse">
+                <xsd:sequence>
+                    <xsd:element name="return" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="notificaResponse" type="tns:notificaResponse"/>
+            <xsd:complexType name="checkPersona">
+                <xsd:sequence>
+                    <xsd:element name="arg0" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="checkPersona" type="tns:checkPersona"/>
+            <xsd:complexType name="checkPersonaResponse">
+                <xsd:sequence>
+                    <xsd:element name="return" type="ns1:estado"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="checkPersonaResponse" type="tns:checkPersonaResponse"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="notificaInput">
+        <wsdl:part name="parameters" element="tns:notifica"/>
+    </wsdl:message>
+    <wsdl:message name="notificaOutput">
+        <wsdl:part name="parameters" element="tns:notificaResponse"/>
+    </wsdl:message>
+    <wsdl:message name="checkPersonaInput">
+        <wsdl:part name="parameters" element="tns:checkPersona"/>
+    </wsdl:message>
+    <wsdl:message name="checkPersonaOutput">
+        <wsdl:part name="parameters" element="tns:checkPersonaResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="servicioPersona">
+        <wsdl:operation name="notifica">
+            <wsdl:input message="tns:notificaInput" xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl"
+                 ns1:Action=""/>
+            <wsdl:output message="tns:notificaOutput" xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl"
+                 ns1:Action=""/>
+        </wsdl:operation>
+        <wsdl:operation name="checkPersona">
+            <wsdl:input message="tns:checkPersonaInput" xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl"
+                 ns1:Action=""/>
+            <wsdl:output message="tns:checkPersonaOutput" xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl"
+                 ns1:Action=""/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

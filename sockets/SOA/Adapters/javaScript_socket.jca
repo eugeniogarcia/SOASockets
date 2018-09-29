@@ -1,0 +1,12 @@
+<adapter-config name="javaScript" adapter="socket" wsdlLocation="../WSDLs/entrada.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/socket/miSocket2"/>
+  <endpoint-activation portType="InboundRequestReply_ptt" operation="InboundRequestReply" UITransmissionPrimitive="InboundRequestReply">
+    <activation-spec className="oracle.tip.adapter.socket.SocketActivationSpec">
+      <property name="ReplyScript" value="reply.js"/>
+      <property name="RequestScript" value="request.js"/>
+      <property name="TransMode" value="Script"/>
+    </activation-spec>
+  </endpoint-activation>
+
+</adapter-config>

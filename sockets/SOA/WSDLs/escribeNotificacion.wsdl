@@ -1,0 +1,24 @@
+<wsdl:definitions
+     name="escribeNotificacion"
+     targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/file/sockets/sockets/escribeNotificacion"
+     xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/file/sockets/sockets/escribeNotificacion"
+     xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/"
+     xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:imp1="http://interfaces.example.soa.euge/"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+  <plt:partnerLinkType name="Write_plt" >
+    <plt:role name="Write_role" >
+      <plt:portType name="tns:Write_ptt" />
+    </plt:role>
+  </plt:partnerLinkType>
+    <wsdl:import namespace="http://interfaces.example.soa.euge/" location="servicioPersona.wsdl"/>
+    <wsdl:message name="Write_msg">
+        <wsdl:part name="body" element="imp1:notifica"/>
+    </wsdl:message>
+    <wsdl:portType name="Write_ptt">
+        <wsdl:operation name="Write">
+            <wsdl:input message="tns:Write_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

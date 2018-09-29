@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jardesc>
+    <jar path="miBeanSockets.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/clienteSocket/elDescriptor.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="false" overwrite="false" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="true" manifestLocation="elManifiesto" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="true" exportJavaFiles="true" exportOutputFolder="false">
+        <file path="/clienteSocket/pom.xml"/>
+        <folder path="/clienteSocket/target/classes/euge/soa"/>
+        <file path="/clienteSocket/target/classes/application.properties"/>
+        <javaElement handleIdentifier="=clienteSocket/src\/main\/java&lt;euge.soa.example.modelo"/>
+        <folder path="/clienteSocket/src/main"/>
+        <file path="/clienteSocket/.classpath"/>
+        <javaElement handleIdentifier="=clienteSocket/src\/main\/java&lt;euge.soa.example.interfaces"/>
+        <file path="/clienteSocket/.gitignore"/>
+        <file path="/clienteSocket/.project"/>
+        <javaElement handleIdentifier="=clienteSocket/src\/main\/java&lt;euge.soa.example.beans"/>
+        <folder path="/clienteSocket/target/classes/META-INF"/>
+    </selectedElements>
+</jardesc>

@@ -1,0 +1,15 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="servicioPersona"
+     targetNamespace="http://interfaces.example.soa.euge/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:bpws="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+     xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
+     xmlns:tns="http://interfaces.example.soa.euge/"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+    <plnk:partnerLinkType name="checkPersona">
+        <plnk:role name="servicioPersona" portType="tns:servicioPersona"/>
+    </plnk:partnerLinkType>
+    <wsdl:import namespace="http://interfaces.example.soa.euge/" location="servicioPersona.wsdl"/>
+</wsdl:definitions>

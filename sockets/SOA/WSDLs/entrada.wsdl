@@ -1,0 +1,37 @@
+<wsdl:definitions
+     name="entrada"
+     targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/socket/sockets/sockets/entrada"
+     xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/socket/sockets/sockets/entrada"
+     xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/"
+     xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:pc="http://xmlns.oracle.com/pcbpel/"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:msg_request="http://shrikworld.blogspot.in/ReadEmpDetails"
+     xmlns:msg_reply="http://shrikworld.blogspot.in/response"
+    >
+  <plt:partnerLinkType name="InboundRequestReply_plt" >
+    <plt:role name="InboundRequestReply_role" >
+      <plt:portType name="tns:InboundRequestReply_ptt" />
+    </plt:role>
+  </plt:partnerLinkType>
+    <wsdl:types>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema" >
+        <import namespace="http://shrikworld.blogspot.in/ReadEmpDetails" schemaLocation="../Schemas/emp.xsd" />
+      </schema>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema" >
+        <import namespace="http://shrikworld.blogspot.in/response" schemaLocation="../Schemas/respuesta.xsd" />
+      </schema>
+    </wsdl:types>
+    <wsdl:message name="EmpDetails_msg_requsest">
+        <wsdl:part name="EmpDetails" element="msg_request:EmpDetails"/>
+    </wsdl:message>
+    <wsdl:message name="Response_msg_reply">
+        <wsdl:part name="Response" element="msg_reply:Response"/>
+    </wsdl:message>
+    <wsdl:portType name="InboundRequestReply_ptt">
+        <wsdl:operation name="InboundRequestReply">
+            <wsdl:input message="tns:EmpDetails_msg_requsest"/>
+            <wsdl:output message="tns:Response_msg_reply"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

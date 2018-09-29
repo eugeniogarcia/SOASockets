@@ -1,0 +1,11 @@
+<adapter-config name="soloEntrada" adapter="socket" wsdlLocation="../WSDLs/soloEntrada.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/socket/miSocket1"/>
+  <endpoint-activation portType="Receive_ptt" operation="Receive" UITransmissionPrimitive="Receive">
+    <activation-spec className="oracle.tip.adapter.socket.SocketActivationSpec">
+      <property name="Xslt" value="../Transformations/request_bis.xsl"/>
+      <property name="TransMode" value="XSLT"/>
+    </activation-spec>
+  </endpoint-activation>
+
+</adapter-config>
