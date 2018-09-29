@@ -84,15 +84,17 @@
         <from>$inputVariable.parameters/arg0/nombre</from>
         <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$enviaInfo_OutboundRequestReply_InputVariable.Persona/ns3:Nombre</to>
       </copy>
-      <copy ignoreMissingFromData="yes">
-        <from>$enviaInfo_OutboundRequestReply_OutputVariable.Response/ns5:Code</from>
-        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$outputVariable.parameters/return</to>
-      </copy>
     </assign>
     <invoke name="enviaInfo" partnerLink="servidorSocket"
             portType="ns2:OutboundRequestReply_ptt" operation="OutboundRequestReply"
             inputVariable="enviaInfo_OutboundRequestReply_InputVariable"
             outputVariable="enviaInfo_OutboundRequestReply_OutputVariable" bpelx:invokeAsDetail="no"/>
+    <assign name="out">
+      <copy>
+        <from>$enviaInfo_OutboundRequestReply_OutputVariable.Response/ns5:Code</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$outputVariable.parameters/return</to>
+      </copy>
+    </assign>
     <!-- Generate reply to synchronous request -->
     <reply name="replyOutput" partnerLink="procesaenvio_client" portType="ns1:gestionSocket" operation="envia" variable="outputVariable"/>
   </sequence>
