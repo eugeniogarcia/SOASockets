@@ -93,7 +93,7 @@
       <service name="gestionSockets" xml:id="id_47">
         <interface.java interface="euge.soa.example.interfaces.gestionSocket" xml:id="id_48"/>
       </service>
-      <reference name="media_con_servicio.media_con_servicio" xml:id="id_49">
+      <reference name="servicioPersona" xml:id="id_49">
         <interface.java interface="interfaces.example.soa.euge.ServicioPersona" xml:id="id_50"/>
       </reference>
     </componentType>
@@ -172,7 +172,7 @@
     <target.uri xml:id="id_98">ContextoSpring/gestionSockets</target.uri>
   </wire>
   <wire xml:id="id_99">
-    <source.uri xml:id="id_100">ContextoSpring/media_con_servicio.media_con_servicio</source.uri>
+    <source.uri xml:id="id_111">ContextoSpring/servicioPersona</source.uri>
     <target.uri xml:id="id_101">media_con_servicio/media_con_servicio</target.uri>
   </wire>
   <wire xml:id="id_102">
