@@ -18,8 +18,8 @@ public class pruebaBeanFusion implements CommandLineRunner{
 		// TODO Auto-generated method stub
 		Estado est=beanAProbar.procesa("1234567g");
 		String resp=beanAProbar.envia(est.getPers());
-		beanAProbar.para();
 		log.info(resp);
+		beanAProbar.para();
 	}
 
 }

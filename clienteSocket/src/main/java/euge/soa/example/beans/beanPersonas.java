@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
 import java.net.UnknownHostException;
 
 import euge.soa.example.interfaces.gestionSocket;
@@ -48,8 +49,6 @@ public class beanPersonas implements gestionSocket, Runnable{
 	@Override
 	public void run() {
 		try {
-			//Crea un servidor en el puerto this.serverPORT con timeout 10000
-			serverSocket.setSoTimeout(1000000);
 			while(!this.para) {
 				System.out.println("Esperando que alguien se conecte en el puerto " + serverSocket.getLocalPort() + "...");
 				//Espera a que llegue una petición
@@ -64,13 +63,37 @@ public class beanPersonas implements gestionSocket, Runnable{
 				Persona per;
 				try {
 					per = construye(line);
+					System.out.println("Notifica");
 					servicio.notifica(per);
+					System.out.println("Responde");
 					//Enviamos este mensaje al cliente
-					respondeCliente("Gracias por contactar con nosotros " + server.getLocalSocketAddress() + "\nAdios!",server.getOutputStream());
-				} catch (Exception e) {
-					//Enviamos este mensaje al cliente
-					respondeCliente("Error: "+e.getMessage()+" from " + server.getLocalSocketAddress() ,server.getOutputStream());
+					respondeCliente("Gracias por contactar con nosotros " + server.getLocalSocketAddress() ,server);
+					System.out.println("Responde (hecho)");
+					if(!server.isClosed()) {
+						server.close();
+					}
 				}
+				catch(SocketException se) {
+					System.out.println("El cliente ya no esta");
+				}
+				catch (Exception e) {
+					System.out.println("Una Excepcion:");
+					System.out.println(e.getMessage());
+					//Enviamos este mensaje al cliente
+					respondeCliente("Error "+ server.getLocalSocketAddress(),server);
+					System.out.println("Una Excepcion (hecho)");
+					if(!server.isClosed()) {
+						server.close();
+					}
+				}
+			}
+		}
+		catch(SocketException se) {
+			if(para) {
+				System.out.println("Cierra el Servidor");
+			}
+			else {
+				se.printStackTrace();
 			}
 		}
 		catch(final UnknownHostException ex) {
@@ -79,14 +102,6 @@ public class beanPersonas implements gestionSocket, Runnable{
 		catch(final IOException e){
 			e.printStackTrace();
 		}
-	}
-
-	private void respondeCliente(String mensaje,OutputStream salida) throws IOException {
-		byte[] b = (mensaje+";").getBytes();
-		for (int i = 0; i < b.length; i++) {
-			salida.write(b[i]);
-		}
-		salida.flush();
 	}
 
 	@Override
@@ -111,6 +126,7 @@ public class beanPersonas implements gestionSocket, Runnable{
 			}
 			os.flush();
 			socket.shutdownOutput();
+
 			//Cierra el socket
 			socket.close();
 		} catch (final IOException ioe) {
@@ -131,16 +147,32 @@ public class beanPersonas implements gestionSocket, Runnable{
 			per.setEdad("xxx");
 			est.setCodigo("Ok");
 			est.setPers(per);
+			this.servicio.notifica(per);
 			return est;
 		}
 		else {
-			return this.servicio.checkPersona(DNI);
+			Estado est= this.servicio.checkPersona(DNI);
+			this.servicio.notifica(est.getPers());
+			return est;
+		}
+	}
+
+	private void respondeCliente(String mensaje,Socket salida) throws IOException ,SocketException{
+		if(!salida.isClosed()) {
+			OutputStream out=salida.getOutputStream();
+			String resp=mensaje+";\n";
+			byte[] b = resp.getBytes();
+			for (int i = 0; i < b.length; i++) {
+				out.write(b[i]);
+			}
+			out.flush();
 		}
 	}
 
 	private String aplana(Persona per) {
 		return per.getNombre()+","+per.getApellido()+","+per.getEdad()+","+per.getDNI()+";";
 	}
+
 	private Persona construye(String per ) throws Exception {
 		char[] dummy=per.toCharArray();
 
