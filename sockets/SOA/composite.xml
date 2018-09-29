@@ -94,7 +94,7 @@
         <interface.java interface="euge.soa.example.interfaces.gestionSocket" xml:id="id_48"/>
       </service>
       <reference name="servicioPersona" xml:id="id_49">
-        <interface.java interface="interfaces.example.soa.euge.ServicioPersona" xml:id="id_50"/>
+        <interface.java interface="euge.soa.example.interfaces.servicioPersona" xml:id="id_50"/>
       </reference>
     </componentType>
   </component>
