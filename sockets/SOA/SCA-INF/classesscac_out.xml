@@ -1,0 +1,33 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Faults>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line/>
+      <col/>
+      <file>Mediators/media_con_servicio.mplan</file>
+      <name>Mediators/media_con_servicio.mplan</name>
+      <fix/>
+      <msg>Case "Notifica.notifica_client.notifica" doesn't have any payload transformation Please make sure source and target message part name are same and of same type. Otherwise, target reference may fail to execute with error message like "Input sourcelike Null" or "Part not found"</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line/>
+      <col/>
+      <file>Mediators/media_con_servicio.mplan</file>
+      <name>Mediators/media_con_servicio.mplan</name>
+      <fix/>
+      <msg>Case "checkPersona.checkpersona_client.checkPersona" doesn't have any payload transformation Please make sure source and target message part name are same and of same type. Otherwise, target reference may fail to execute with error message like "Input sourcelike Null" or "Part not found"</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc>/*[namespace-uri()='http://docs.oasis-open.org/wsbpel/2.0/process/executable'][local-name()='process']</loc>
+      <line>32</line>
+      <col/>
+      <file>BPEL/socket.bpel</file>
+      <name>BPEL/socket.bpel</name>
+      <fix>Fix the process to be *either* durable or synchronous.</fix>
+      <msg>Process "socket" is both durable (onMessage,Receive,Wait) and synchronous.</msg>
+   </Fault>
+</Faults>
