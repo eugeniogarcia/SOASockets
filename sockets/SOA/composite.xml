@@ -10,181 +10,196 @@
            xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
            xmlns:orawsp="http://schemas.oracle.com/ws/2006/01/policy"
            xmlns:ui="http://xmlns.oracle.com/soa/designer/"
-           xmlns:sca-ext="http://xmlns.oracle.com/sca/1.0-ext" xml:id="id_1" ui:customizable="true">
+           xmlns:sca-ext="http://xmlns.oracle.com/sca/1.0-ext">
   <import namespace="http://xmlns.oracle.com/pcbpel/adapter/socket/sockets/sockets/entrada"
-          location="WSDLs/entrada.wsdl" importType="wsdl" xml:id="id_2"/>
+          location="WSDLs/entrada.wsdl" importType="wsdl"/>
   <import namespace="http://xmlns.oracle.com/pcbpel/adapter/file/sockets/sockets/escribeArchivo"
-          location="WSDLs/escribeArchivo.wsdl" importType="wsdl" xml:id="id_3"/>
+          location="WSDLs/escribeArchivo.wsdl" importType="wsdl"/>
   <import namespace="http://xmlns.oracle.com/pcbpel/adapter/socket/sockets/sockets/soloEntrada"
-          location="WSDLs/soloEntrada.wsdl" importType="wsdl" xml:id="id_4"/>
-  <import namespace="http://interfaces.example.soa.euge/" location="WSDLs/gestionSocket.wsdl" importType="wsdl"
-          xml:id="id_5"/>
-  <import namespace="http://interfaces.example.soa.euge/" location="WSDLs/servicioPersona.wsdl" importType="wsdl"
-          xml:id="id_6"/>
+          location="WSDLs/soloEntrada.wsdl" importType="wsdl"/>
+  <import namespace="http://interfaces.example.soa.euge/" location="WSDLs/gestionSocket.wsdl" importType="wsdl"/>
+  <import namespace="http://interfaces.example.soa.euge/" location="WSDLs/servicioPersona.wsdl" importType="wsdl"/>
   <import namespace="http://interfaces.example.soa.euge/" location="WSDLs/servicioPersonaWrapper.wsdl"
-          importType="wsdl" xml:id="id_7"/>
+          importType="wsdl"/>
   <import namespace="http://interfaces.example.soa.euge/" location="WSDLs/servicioPersonaWrapper1.wsdl"
-          importType="wsdl" xml:id="id_8"/>
+          importType="wsdl"/>
   <import namespace="http://xmlns.oracle.com/pcbpel/adapter/file/sockets/sockets/escribeNotificacion"
-          location="WSDLs/escribeNotificacion.wsdl" importType="wsdl" xml:id="id_9"/>
-  <service name="entrada" ui:wsdlLocation="WSDLs/entrada.wsdl" xml:id="id_10">
-    <interface.wsdl interface="http://xmlns.oracle.com/pcbpel/adapter/socket/sockets/sockets/entrada#wsdl.interface(InboundRequestReply_ptt)"
-                    xml:id="id_11"/>
-    <binding.jca config="Adapters/entrada_socket.jca" xml:id="id_12">
-      <property name="useRejectedMessageRecovery" type="xs:string" many="false" override="may" xml:id="id_13">true</property>
+          location="WSDLs/escribeNotificacion.wsdl" importType="wsdl"/>
+  <import namespace="http://interfaces.example.soa.euge/" location="WSDLs/enviaSocketWrapper.wsdl" importType="wsdl"/>
+  <import namespace="http://xmlns.oracle.com/pcbpel/adapter/socket/sockets/sockets/servidorSocket"
+          location="WSDLs/servidorSocket.wsdl" importType="wsdl"/>
+  <service name="entrada" ui:wsdlLocation="WSDLs/entrada.wsdl">
+    <interface.wsdl interface="http://xmlns.oracle.com/pcbpel/adapter/socket/sockets/sockets/entrada#wsdl.interface(InboundRequestReply_ptt)"/>
+    <binding.jca config="Adapters/entrada_socket.jca">
+      <property name="useRejectedMessageRecovery" type="xs:string" many="false" override="may">true</property>
     </binding.jca>
   </service>
-  <service name="complejo" ui:wsdlLocation="WSDLs/entrada.wsdl" xml:id="id_14">
-    <interface.wsdl interface="http://xmlns.oracle.com/pcbpel/adapter/socket/sockets/sockets/entrada#wsdl.interface(InboundRequestReply_ptt)"
-                    xml:id="id_15"/>
-    <binding.jca config="Adapters/complejo_socket.jca" xml:id="id_16">
-      <property name="useRejectedMessageRecovery" type="xs:string" many="false" override="may" xml:id="id_17">true</property>
+  <service name="complejo" ui:wsdlLocation="WSDLs/entrada.wsdl">
+    <interface.wsdl interface="http://xmlns.oracle.com/pcbpel/adapter/socket/sockets/sockets/entrada#wsdl.interface(InboundRequestReply_ptt)"/>
+    <binding.jca config="Adapters/complejo_socket.jca">
+      <property name="useRejectedMessageRecovery" type="xs:string" many="false" override="may">true</property>
     </binding.jca>
   </service>
-  <service name="soloEntrada" ui:wsdlLocation="WSDLs/soloEntrada.wsdl" xml:id="id_18">
-    <interface.wsdl interface="http://xmlns.oracle.com/pcbpel/adapter/socket/sockets/sockets/soloEntrada#wsdl.interface(Receive_ptt)"
-                    xml:id="id_19"/>
-    <binding.jca config="Adapters/soloEntrada_socket.jca" xml:id="id_20">
-      <property name="useRejectedMessageRecovery" type="xs:string" many="false" override="may" xml:id="id_21">true</property>
+  <service name="soloEntrada" ui:wsdlLocation="WSDLs/soloEntrada.wsdl">
+    <interface.wsdl interface="http://xmlns.oracle.com/pcbpel/adapter/socket/sockets/sockets/soloEntrada#wsdl.interface(Receive_ptt)"/>
+    <binding.jca config="Adapters/soloEntrada_socket.jca">
+      <property name="useRejectedMessageRecovery" type="xs:string" many="false" override="may">true</property>
     </binding.jca>
   </service>
-  <service name="javaScript" ui:wsdlLocation="WSDLs/entrada.wsdl" xml:id="id_22">
-    <interface.wsdl interface="http://xmlns.oracle.com/pcbpel/adapter/socket/sockets/sockets/entrada#wsdl.interface(InboundRequestReply_ptt)"
-                    xml:id="id_23"/>
-    <binding.jca config="Adapters/javaScript_socket.jca" xml:id="id_24">
-      <property name="useRejectedMessageRecovery" type="xs:string" many="false" override="may" xml:id="id_25">true</property>
+  <service name="javaScript" ui:wsdlLocation="WSDLs/entrada.wsdl">
+    <interface.wsdl interface="http://xmlns.oracle.com/pcbpel/adapter/socket/sockets/sockets/entrada#wsdl.interface(InboundRequestReply_ptt)"/>
+    <binding.jca config="Adapters/javaScript_socket.jca">
+      <property name="useRejectedMessageRecovery" type="xs:string" many="false" override="may">true</property>
     </binding.jca>
   </service>
-  <service name="gestionSockets" ui:wsdlLocation="WSDLs/gestionSocket.wsdl" xml:id="id_26">
-    <interface.wsdl interface="http://interfaces.example.soa.euge/#wsdl.interface(gestionSocket)" xml:id="id_27"/>
-    <binding.ws port="http://interfaces.example.soa.euge/#wsdl.endpoint(gestionSockets/gestionSocket_pt)"
-                xml:id="id_28"/>
+  <service name="gestionSockets" ui:wsdlLocation="WSDLs/gestionSocket.wsdl">
+    <interface.wsdl interface="http://interfaces.example.soa.euge/#wsdl.interface(gestionSocket)"/>
+    <binding.ws port="http://interfaces.example.soa.euge/#wsdl.endpoint(gestionSockets/gestionSocket_pt)"/>
   </service>
-  <component name="socket" version="2.0" xml:id="id_29">
-    <implementation.bpel src="BPEL/socket.bpel" xml:id="id_30"/>
-    <componentType xml:id="id_31">
-      <service name="socket_client" ui:wsdlLocation="WSDLs/entrada.wsdl" xml:id="id_32">
-        <interface.wsdl interface="http://xmlns.oracle.com/pcbpel/adapter/socket/sockets/sockets/entrada#wsdl.interface(InboundRequestReply_ptt)"
-                        xml:id="id_33"/>
+  <service name="enviaAlSocket_ep" ui:wsdlLocation="WSDLs/enviaSocketWrapper.wsdl">
+    <interface.wsdl interface="http://interfaces.example.soa.euge/#wsdl.interface(gestionSocket)"/>
+    <binding.ws port="http://interfaces.example.soa.euge/#wsdl.endpoint(enviaAlSocket_ep/gestionSocket_pt)"/>
+  </service>
+  <component name="socket" version="2.0">
+    <implementation.bpel src="BPEL/socket.bpel"/>
+    <componentType>
+      <service name="socket_client" ui:wsdlLocation="WSDLs/entrada.wsdl">
+        <interface.wsdl interface="http://xmlns.oracle.com/pcbpel/adapter/socket/sockets/sockets/entrada#wsdl.interface(InboundRequestReply_ptt)"/>
       </service>
-      <reference name="escribeArchivo" ui:wsdlLocation="WSDLs/escribeArchivo.wsdl" xml:id="id_34">
-        <interface.wsdl interface="http://xmlns.oracle.com/pcbpel/adapter/file/sockets/sockets/escribeArchivo#wsdl.interface(Write_ptt)"
-                        xml:id="id_35"/>
+      <reference name="escribeArchivo" ui:wsdlLocation="WSDLs/escribeArchivo.wsdl">
+        <interface.wsdl interface="http://xmlns.oracle.com/pcbpel/adapter/file/sockets/sockets/escribeArchivo#wsdl.interface(Write_ptt)"/>
       </reference>
     </componentType>
-    <property name="bpel.config.transaction" type="xs:string" many="false" xml:id="id_36">required</property>
+    <property name="bpel.config.transaction" type="xs:string" many="false">required</property>
   </component>
-  <component name="mediador" xml:id="id_37">
-    <implementation.mediator src="Mediators/mediador.mplan" xml:id="id_38"/>
-    <componentType xml:id="id_39">
-      <service name="mediador" ui:wsdlLocation="WSDLs/soloEntrada.wsdl" xml:id="id_40">
-        <interface.wsdl interface="http://xmlns.oracle.com/pcbpel/adapter/socket/sockets/sockets/soloEntrada#wsdl.interface(Receive_ptt)"
-                        xml:id="id_41"/>
+  <component name="mediador">
+    <implementation.mediator src="Mediators/mediador.mplan"/>
+    <componentType>
+      <service name="mediador" ui:wsdlLocation="WSDLs/soloEntrada.wsdl">
+        <interface.wsdl interface="http://xmlns.oracle.com/pcbpel/adapter/socket/sockets/sockets/soloEntrada#wsdl.interface(Receive_ptt)"/>
       </service>
-      <reference name="socket.socket_client" ui:wsdlLocation="WSDLs/entrada.wsdl" xml:id="id_42">
-        <interface.wsdl interface="http://xmlns.oracle.com/pcbpel/adapter/socket/sockets/sockets/entrada#wsdl.interface(InboundRequestReply_ptt)"
-                        xml:id="id_43"/>
-      </reference>
-    </componentType>
-  </component>
-  <component name="ContextoSpring" xml:id="id_44">
-    <implementation.spring src="Spring/ContextoSpring.xml" xml:id="id_45"/>
-    <componentType xml:id="id_46">
-      <service name="gestionSockets" xml:id="id_47">
-        <interface.java interface="euge.soa.example.interfaces.gestionSocket" xml:id="id_48"/>
-      </service>
-      <reference name="servicioPersona" xml:id="id_49">
-        <interface.java interface="euge.soa.example.interfaces.servicioPersona" xml:id="id_50"/>
+      <reference name="socket.socket_client" ui:wsdlLocation="WSDLs/entrada.wsdl">
+        <interface.wsdl interface="http://xmlns.oracle.com/pcbpel/adapter/socket/sockets/sockets/entrada#wsdl.interface(InboundRequestReply_ptt)"/>
       </reference>
     </componentType>
   </component>
-  <component name="media_con_servicio" xml:id="id_51">
-    <implementation.mediator src="Mediators/media_con_servicio.mplan" xml:id="id_52"/>
-    <componentType xml:id="id_53">
-      <service name="media_con_servicio" ui:wsdlLocation="WSDLs/servicioPersona.wsdl" xml:id="id_54">
-        <interface.wsdl interface="http://interfaces.example.soa.euge/#wsdl.interface(servicioPersona)" xml:id="id_55"/>
+  <component name="ContextoSpring">
+    <implementation.spring src="Spring/ContextoSpring.xml"/>
+    <componentType>
+      <service name="gestionSockets">
+        <interface.java interface="euge.soa.example.interfaces.gestionSocket"/>
       </service>
-      <reference name="Notifica.notifica_client" ui:wsdlLocation="WSDLs/servicioPersonaWrapper.wsdl" xml:id="id_56">
-        <interface.wsdl interface="http://interfaces.example.soa.euge/#wsdl.interface(servicioPersona)" xml:id="id_57"/>
-      </reference>
-      <reference name="checkPersona.checkpersona_client" ui:wsdlLocation="WSDLs/servicioPersonaWrapper1.wsdl"
-                 xml:id="id_58">
-        <interface.wsdl interface="http://interfaces.example.soa.euge/#wsdl.interface(servicioPersona)" xml:id="id_59"/>
+      <reference name="media_con_servicio.media_con_servicio">
+        <interface.java interface="interfaces.example.soa.euge.ServicioPersona"/>
       </reference>
     </componentType>
   </component>
-  <component name="Notifica" version="2.0" xml:id="id_60">
-    <implementation.bpel src="BPEL/Notifica.bpel" xml:id="id_61"/>
-    <componentType xml:id="id_62">
-      <service name="notifica_client" ui:wsdlLocation="WSDLs/servicioPersonaWrapper.wsdl" xml:id="id_63">
-        <interface.wsdl interface="http://interfaces.example.soa.euge/#wsdl.interface(servicioPersona)" xml:id="id_64"/>
+  <component name="media_con_servicio">
+    <implementation.mediator src="Mediators/media_con_servicio.mplan"/>
+    <componentType>
+      <service name="media_con_servicio" ui:wsdlLocation="WSDLs/servicioPersona.wsdl">
+        <interface.wsdl interface="http://interfaces.example.soa.euge/#wsdl.interface(servicioPersona)"/>
       </service>
-      <reference name="escribeNotificacion" ui:wsdlLocation="WSDLs/escribeNotificacion.wsdl" xml:id="id_65">
-        <interface.wsdl interface="http://xmlns.oracle.com/pcbpel/adapter/file/sockets/sockets/escribeNotificacion#wsdl.interface(Write_ptt)"
-                        xml:id="id_66"/>
+      <reference name="Notifica.notifica_client" ui:wsdlLocation="WSDLs/servicioPersonaWrapper.wsdl">
+        <interface.wsdl interface="http://interfaces.example.soa.euge/#wsdl.interface(servicioPersona)"/>
+      </reference>
+      <reference name="checkPersona.checkpersona_client" ui:wsdlLocation="WSDLs/servicioPersonaWrapper1.wsdl">
+        <interface.wsdl interface="http://interfaces.example.soa.euge/#wsdl.interface(servicioPersona)"/>
       </reference>
     </componentType>
   </component>
-  <component name="checkPersona" version="2.0" xml:id="id_67">
-    <implementation.bpel src="BPEL/checkPersona.bpel" xml:id="id_68"/>
-    <componentType xml:id="id_69">
-      <service name="checkpersona_client" ui:wsdlLocation="WSDLs/servicioPersonaWrapper1.wsdl" xml:id="id_70">
-        <interface.wsdl interface="http://interfaces.example.soa.euge/#wsdl.interface(servicioPersona)" xml:id="id_71"/>
+  <component name="Notifica" version="2.0">
+    <implementation.bpel src="BPEL/Notifica.bpel"/>
+    <componentType>
+      <service name="notifica_client" ui:wsdlLocation="WSDLs/servicioPersonaWrapper.wsdl">
+        <interface.wsdl interface="http://interfaces.example.soa.euge/#wsdl.interface(servicioPersona)"/>
+      </service>
+      <reference name="escribeNotificacion" ui:wsdlLocation="WSDLs/escribeNotificacion.wsdl">
+        <interface.wsdl interface="http://xmlns.oracle.com/pcbpel/adapter/file/sockets/sockets/escribeNotificacion#wsdl.interface(Write_ptt)"/>
+      </reference>
+    </componentType>
+  </component>
+  <component name="checkPersona" version="2.0">
+    <implementation.bpel src="BPEL/checkPersona.bpel"/>
+    <componentType>
+      <service name="checkpersona_client" ui:wsdlLocation="WSDLs/servicioPersonaWrapper1.wsdl">
+        <interface.wsdl interface="http://interfaces.example.soa.euge/#wsdl.interface(servicioPersona)"/>
       </service>
     </componentType>
   </component>
-  <reference name="escribeArchivo" ui:wsdlLocation="WSDLs/escribeArchivo.wsdl" xml:id="id_72">
-    <interface.wsdl interface="http://xmlns.oracle.com/pcbpel/adapter/file/sockets/sockets/escribeArchivo#wsdl.interface(Write_ptt)"
-                    xml:id="id_73"/>
-    <binding.jca config="Adapters/escribeArchivo_file.jca" xml:id="id_74"/>
+  <component name="enviaASocket" version="2.0">
+    <implementation.bpel src="BPEL/enviaASocket.bpel"/>
+    <componentType>
+      <service name="enviaAlSocket" ui:wsdlLocation="WSDLs/enviaSocketWrapper.wsdl">
+        <interface.wsdl interface="http://interfaces.example.soa.euge/#wsdl.interface(gestionSocket)"/>
+      </service>
+      <reference name="servidorSocket" ui:wsdlLocation="WSDLs/servidorSocket.wsdl">
+        <interface.wsdl interface="http://xmlns.oracle.com/pcbpel/adapter/socket/sockets/sockets/servidorSocket#wsdl.interface(OutboundRequestReply_ptt)"/>
+      </reference>
+    </componentType>
+  </component>
+  <reference name="escribeArchivo" ui:wsdlLocation="WSDLs/escribeArchivo.wsdl">
+    <interface.wsdl interface="http://xmlns.oracle.com/pcbpel/adapter/file/sockets/sockets/escribeArchivo#wsdl.interface(Write_ptt)"/>
+    <binding.jca config="Adapters/escribeArchivo_file.jca"/>
   </reference>
-  <reference name="escribeNotificacion" ui:wsdlLocation="WSDLs/escribeNotificacion.wsdl" xml:id="id_75">
-    <interface.wsdl interface="http://xmlns.oracle.com/pcbpel/adapter/file/sockets/sockets/escribeNotificacion#wsdl.interface(Write_ptt)"
-                    xml:id="id_76"/>
-    <binding.jca config="Adapters/escribeNotificacion_file.jca" xml:id="id_77"/>
+  <reference name="escribeNotificacion" ui:wsdlLocation="WSDLs/escribeNotificacion.wsdl">
+    <interface.wsdl interface="http://xmlns.oracle.com/pcbpel/adapter/file/sockets/sockets/escribeNotificacion#wsdl.interface(Write_ptt)"/>
+    <binding.jca config="Adapters/escribeNotificacion_file.jca"/>
   </reference>
-  <wire xml:id="id_78">
-    <source.uri xml:id="id_79">entrada</source.uri>
-    <target.uri xml:id="id_80">socket/socket_client</target.uri>
+  <reference name="servidorSocket" ui:wsdlLocation="WSDLs/servidorSocket.wsdl">
+    <interface.wsdl interface="http://xmlns.oracle.com/pcbpel/adapter/socket/sockets/sockets/servidorSocket#wsdl.interface(OutboundRequestReply_ptt)"/>
+    <binding.jca config="Adapters/servidorSocket_socket.jca"/>
+  </reference>
+  <wire>
+    <source.uri>entrada</source.uri>
+    <target.uri>socket/socket_client</target.uri>
   </wire>
-  <wire xml:id="id_81">
-    <source.uri xml:id="id_82">socket/escribeArchivo</source.uri>
-    <target.uri xml:id="id_83">escribeArchivo</target.uri>
+  <wire>
+    <source.uri>socket/escribeArchivo</source.uri>
+    <target.uri>escribeArchivo</target.uri>
   </wire>
-  <wire xml:id="id_84">
-    <source.uri xml:id="id_85">complejo</source.uri>
-    <target.uri xml:id="id_86">socket/socket_client</target.uri>
+  <wire>
+    <source.uri>complejo</source.uri>
+    <target.uri>socket/socket_client</target.uri>
   </wire>
-  <wire xml:id="id_87">
-    <source.uri xml:id="id_88">mediador/socket.socket_client</source.uri>
-    <target.uri xml:id="id_89">socket/socket_client</target.uri>
+  <wire>
+    <source.uri>mediador/socket.socket_client</source.uri>
+    <target.uri>socket/socket_client</target.uri>
   </wire>
-  <wire xml:id="id_90">
-    <source.uri xml:id="id_91">soloEntrada</source.uri>
-    <target.uri xml:id="id_92">mediador/mediador</target.uri>
+  <wire>
+    <source.uri>soloEntrada</source.uri>
+    <target.uri>mediador/mediador</target.uri>
   </wire>
-  <wire xml:id="id_93">
-    <source.uri xml:id="id_94">javaScript</source.uri>
-    <target.uri xml:id="id_95">socket/socket_client</target.uri>
+  <wire>
+    <source.uri>javaScript</source.uri>
+    <target.uri>socket/socket_client</target.uri>
   </wire>
-  <wire xml:id="id_96">
-    <source.uri xml:id="id_97">gestionSockets</source.uri>
-    <target.uri xml:id="id_98">ContextoSpring/gestionSockets</target.uri>
+  <wire>
+    <source.uri>gestionSockets</source.uri>
+    <target.uri>ContextoSpring/gestionSockets</target.uri>
   </wire>
-  <wire xml:id="id_99">
-    <source.uri xml:id="id_111">ContextoSpring/servicioPersona</source.uri>
-    <target.uri xml:id="id_101">media_con_servicio/media_con_servicio</target.uri>
+  <wire>
+    <source.uri>ContextoSpring/media_con_servicio.media_con_servicio</source.uri>
+    <target.uri>media_con_servicio/media_con_servicio</target.uri>
   </wire>
-  <wire xml:id="id_102">
-    <source.uri xml:id="id_103">media_con_servicio/Notifica.notifica_client</source.uri>
-    <target.uri xml:id="id_104">Notifica/notifica_client</target.uri>
+  <wire>
+    <source.uri>media_con_servicio/Notifica.notifica_client</source.uri>
+    <target.uri>Notifica/notifica_client</target.uri>
   </wire>
-  <wire xml:id="id_105">
-    <source.uri xml:id="id_106">media_con_servicio/checkPersona.checkpersona_client</source.uri>
-    <target.uri xml:id="id_107">checkPersona/checkpersona_client</target.uri>
+  <wire>
+    <source.uri>media_con_servicio/checkPersona.checkpersona_client</source.uri>
+    <target.uri>checkPersona/checkpersona_client</target.uri>
   </wire>
-  <wire xml:id="id_108">
-    <source.uri xml:id="id_109">Notifica/escribeNotificacion</source.uri>
-    <target.uri xml:id="id_110">escribeNotificacion</target.uri>
+  <wire>
+    <source.uri>Notifica/escribeNotificacion</source.uri>
+    <target.uri>escribeNotificacion</target.uri>
+  </wire>
+  <wire>
+    <source.uri>enviaAlSocket_ep</source.uri>
+    <target.uri>enviaASocket/enviaAlSocket</target.uri>
+  </wire>
+  <wire>
+    <source.uri>enviaASocket/servidorSocket</source.uri>
+    <target.uri>servidorSocket</target.uri>
   </wire>
 </composite>

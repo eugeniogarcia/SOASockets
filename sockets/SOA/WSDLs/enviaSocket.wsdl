@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions
+     name="gestionSocket"
+     targetNamespace="http://interfaces.example.soa.euge/"
+     xmlns:tns="http://interfaces.example.soa.euge/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+     xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+     xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+    <wsdl:types>
+        <xsd:schema xmlns:ns0="http://interfaces.example.soa.euge/types" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             targetNamespace="http://interfaces.example.soa.euge/types">
+            <xsd:complexType name="estado">
+                <xsd:sequence>
+                    <xsd:element name="codigo" type="xsd:string" minOccurs="0"/>
+                    <xsd:element name="pers" type="ns0:persona" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="persona">
+                <xsd:sequence>
+                    <xsd:element name="DNI" type="xsd:string" minOccurs="0"/>
+                    <xsd:element name="apellido" type="xsd:string" minOccurs="0"/>
+                    <xsd:element name="edad" type="xsd:string" minOccurs="0"/>
+                    <xsd:element name="nombre" type="xsd:string" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:schema>
+        <xsd:schema targetNamespace="http://interfaces.example.soa.euge/" xmlns:tns="http://interfaces.example.soa.euge/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://interfaces.example.soa.euge/types">
+            <xsd:import namespace="http://interfaces.example.soa.euge/types"/>
+            <xsd:complexType name="envia">
+                <xsd:sequence>
+                    <xsd:element name="arg0" type="ns1:persona"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="envia" type="tns:envia"/>
+            <xsd:complexType name="enviaResponse">
+                <xsd:sequence>
+                    <xsd:element name="return" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="enviaResponse" type="tns:enviaResponse"/>
+            <xsd:complexType name="procesa">
+                <xsd:sequence>
+                    <xsd:element name="arg0" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="enviaInput">
+        <wsdl:part name="parameters" element="tns:envia"/>
+    </wsdl:message>
+    <wsdl:message name="enviaOutput">
+        <wsdl:part name="parameters" element="tns:enviaResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="gestionSocket">
+        <wsdl:operation name="envia">
+            <wsdl:input message="tns:enviaInput" xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl"
+                 ns1:Action=""/>
+            <wsdl:output message="tns:enviaOutput" xmlns:ns1="http://www.w3.org/2006/05/addressing/wsdl"
+                 ns1:Action=""/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

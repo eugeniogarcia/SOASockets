@@ -1,0 +1,10 @@
+<adapter-config name="servidorSocket" adapter="socket" wsdlLocation="../WSDLs/servidorSocket.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/socket/miSocket4"/>
+  <endpoint-interaction portType="OutboundRequestReply_ptt" operation="OutboundRequestReply" UITransmissionPrimitive="OutboundRequestReply">
+    <interaction-spec className="oracle.tip.adapter.socket.SocketInteractionSpec">
+      <property name="TransMode" value="NXSD"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+</adapter-config>

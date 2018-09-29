@@ -1,0 +1,36 @@
+<wsdl:definitions
+     name="servidorSocket"
+     targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/socket/sockets/sockets/servidorSocket"
+     xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/socket/sockets/sockets/servidorSocket"
+     xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/"
+     xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:msg_request="http://euge.prueba.in/persona"
+     xmlns:msg_reply="http://shrikworld.blogspot.in/response"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+  <plt:partnerLinkType name="OutboundRequestReply_plt" >
+    <plt:role name="OutboundRequestReply_role" >
+      <plt:portType name="tns:OutboundRequestReply_ptt" />
+    </plt:role>
+  </plt:partnerLinkType>
+    <wsdl:types>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema" >
+        <import namespace="http://euge.prueba.in/persona" schemaLocation="../Schemas/persona.xsd" />
+      </schema>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema" >
+        <import namespace="http://shrikworld.blogspot.in/response" schemaLocation="../Schemas/respuesta.xsd" />
+      </schema>
+    </wsdl:types>
+    <wsdl:message name="Persona_msg_requsest">
+        <wsdl:part name="Persona" element="msg_request:Persona"/>
+    </wsdl:message>
+    <wsdl:message name="Response_msg_reply">
+        <wsdl:part name="Response" element="msg_reply:Response"/>
+    </wsdl:message>
+    <wsdl:portType name="OutboundRequestReply_ptt">
+        <wsdl:operation name="OutboundRequestReply">
+            <wsdl:input message="tns:Persona_msg_requsest"/>
+            <wsdl:output message="tns:Response_msg_reply"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

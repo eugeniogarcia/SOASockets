@@ -1,0 +1,100 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Mon Sep 24 23:01:49 CEST 2018
+  Author:  e.garcia.san.martin
+  Purpose: Synchronous BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="enviaASocket"
+               targetNamespace="http://xmlns.oracle.com/sockets/sockets/enviaASocket"
+               xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+               xmlns:client="http://xmlns.oracle.com/sockets/sockets/enviaASocket"
+               xmlns:ora="http://schemas.oracle.com/xpath/extension"
+               xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+               xmlns:ns1="http://interfaces.example.soa.euge/"
+               xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ui="http://xmlns.oracle.com/soa/designer"
+         xmlns:ns2="http://xmlns.oracle.com/pcbpel/adapter/socket/sockets/sockets/servidorSocket"
+         xmlns:ns3="http://euge.prueba.in/persona" xmlns:ns4="http://shrikworld.blogspot.in/response">
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      PARTNERLINKS                                                      
+      List of services participating in this BPEL process               
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <import namespace="http://interfaces.example.soa.euge/" location="../WSDLs/enviaSocketWrapper.wsdl"
+          importType="http://schemas.xmlsoap.org/wsdl/" ui:processWSDL="true"/>
+  <partnerLinks>
+    <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+    <partnerLink name="enviaAlSocket" partnerLinkType="ns1:enviaASocket" myRole="gestionSocket"/>
+    <partnerLink name="servidorSocket" partnerLinkType="ns2:OutboundRequestReply_plt"
+                 partnerRole="OutboundRequestReply_role"/>
+  </partnerLinks>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      VARIABLES                                                        
+      List of messages and XML documents used within this BPEL process 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <variables>
+    <!-- Reference to the message passed as input during initiation -->
+    <variable name="inputVariable" messageType="ns1:enviaInput"/>
+
+    <!-- Reference to the message that will be returned to the requester-->
+    <variable name="outputVariable" messageType="ns1:enviaOutput"/>
+    <variable name="enviaServidor_OutboundRequestReply_InputVariable" messageType="ns2:Persona_msg_requsest"/>
+    <variable name="enviaServidor_OutboundRequestReply_OutputVariable" messageType="ns2:Response_msg_reply"/>
+  </variables>
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <sequence name="main">
+
+    <!-- Receive input from requestor. (Note: This maps to operation defined in enviaASocket.wsdl) -->
+    <receive name="receiveInput" partnerLink="enviaAlSocket" portType="ns1:gestionSocket" operation="envia" variable="inputVariable" createInstance="yes"/>
+    <assign name="in">
+      <copy>
+        <from>$inputVariable.parameters/arg0/nombre</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$enviaServidor_OutboundRequestReply_InputVariable.Persona/ns3:Nombre</to>
+      </copy>
+      <copy>
+        <from>$inputVariable.parameters/arg0/edad</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$enviaServidor_OutboundRequestReply_InputVariable.Persona/ns3:Edad</to>
+      </copy>
+      <copy>
+        <from>$inputVariable.parameters/arg0/apellido</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$enviaServidor_OutboundRequestReply_InputVariable.Persona/ns3:Apellido</to>
+      </copy>
+      <copy>
+        <from>$inputVariable.parameters/arg0/DNI</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$enviaServidor_OutboundRequestReply_InputVariable.Persona/ns3:DNI</to>
+      </copy>
+    </assign>
+    <invoke name="enviaServidor" partnerLink="servidorSocket"
+            portType="ns2:OutboundRequestReply_ptt" operation="OutboundRequestReply"
+            inputVariable="enviaServidor_OutboundRequestReply_InputVariable" bpelx:invokeAsDetail="no"
+            outputVariable="enviaServidor_OutboundRequestReply_OutputVariable"/>
+    <assign name="out">
+      <copy>
+        <from>$enviaServidor_OutboundRequestReply_OutputVariable.Response/ns4:Code</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$outputVariable.parameters/return</to>
+      </copy>
+    </assign>
+    <!-- Generate reply to synchronous request -->
+    <reply name="replyOutput" partnerLink="enviaAlSocket" portType="ns1:gestionSocket" operation="envia" variable="outputVariable"/>
+  </sequence>
+</process>
