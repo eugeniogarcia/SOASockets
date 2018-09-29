@@ -27,7 +27,7 @@
          xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
          xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
          xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
-         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap">
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap" xml:id="id_1">
 
   <!-- 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -36,14 +36,14 @@
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   -->
   <import namespace="http://interfaces.example.soa.euge/" location="../WSDLs/servicioPersonaWrapper1.wsdl"
-          importType="http://schemas.xmlsoap.org/wsdl/" ui:processWSDL="true"/>
-  <partnerLinks>
+          importType="http://schemas.xmlsoap.org/wsdl/" ui:processWSDL="true" xml:id="id_2"/>
+  <partnerLinks xml:id="id_3">
     <!-- 
       The 'client' role represents the requester of this service. It is 
       used for callback. The location and correlation information associated
       with the client role are automatically set using WS-Addressing.
     -->
-    <partnerLink name="checkpersona_client" partnerLinkType="ns1:checkPersona" myRole="servicioPersona"/>
+    <partnerLink name="checkpersona_client" partnerLinkType="ns1:checkPersona" myRole="servicioPersona" xml:id="id_4"/>
   </partnerLinks>
 
   <!-- 
@@ -52,12 +52,12 @@
       List of messages and XML documents used within this BPEL process 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   -->
-  <variables>
+  <variables xml:id="id_5">
     <!-- Reference to the message passed as input during initiation -->
 
     <!-- Reference to the message that will be returned to the requester-->
-    <variable name="receiveInput_checkPersona_InputVariable" messageType="ns1:checkPersonaInput"/>
-    <variable name="replyOutput_checkPersona_OutputVariable" messageType="ns1:checkPersonaOutput"/>
+    <variable name="receiveInput_checkPersona_InputVariable" messageType="ns1:checkPersonaInput" xml:id="id_6"/>
+    <variable name="replyOutput_checkPersona_OutputVariable" messageType="ns1:checkPersonaOutput" xml:id="id_7"/>
   </variables>
 
   <!-- 
@@ -67,35 +67,36 @@
      services integrated within this business process                  
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   -->
-  <sequence name="main">
+  <sequence name="main" xml:id="id_8">
 
     <!-- Receive input from requestor. (Note: This maps to operation defined in checkPersona.wsdl) -->
     <receive name="receiveInput" partnerLink="checkpersona_client" portType="ns1:servicioPersona"
-             operation="checkPersona" variable="receiveInput_checkPersona_InputVariable" createInstance="yes"/>
-    <assign name="asigna">
-      <copy>
-        <from>$receiveInput_checkPersona_InputVariable.parameters/arg0</from>
-        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$replyOutput_checkPersona_OutputVariable.parameters/return/pers/DNI</to>
+             operation="checkPersona" variable="receiveInput_checkPersona_InputVariable" createInstance="yes"
+             xml:id="id_9"/>
+    <assign name="asigna" xml:id="id_10">
+      <copy xml:id="id_11">
+        <from xml:id="id_12">$receiveInput_checkPersona_InputVariable.parameters/arg0</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" xml:id="id_13">$replyOutput_checkPersona_OutputVariable.parameters/return/pers/DNI</to>
       </copy>
-      <copy>
-        <from>'Ok'</from>
-        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$replyOutput_checkPersona_OutputVariable.parameters/return/codigo</to>
+      <copy xml:id="id_14">
+        <from xml:id="id_15">'Ok'</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" xml:id="id_16">$replyOutput_checkPersona_OutputVariable.parameters/return/codigo</to>
       </copy>
-      <copy>
-        <from>'Pupa'</from>
-        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$replyOutput_checkPersona_OutputVariable.parameters/return/pers/nombre</to>
+      <copy xml:id="id_17">
+        <from xml:id="id_18">'Pupa'</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" xml:id="id_19">$replyOutput_checkPersona_OutputVariable.parameters/return/pers/nombre</to>
       </copy>
-      <copy>
-        <from>'Garcia Zach'</from>
-        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$replyOutput_checkPersona_OutputVariable.parameters/return/pers/apellido</to>
+      <copy xml:id="id_20">
+        <from xml:id="id_21">'Garcia Zach'</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" xml:id="id_22">$replyOutput_checkPersona_OutputVariable.parameters/return/pers/apellido</to>
       </copy>
-      <copy>
-        <from>'14'</from>
-        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$replyOutput_checkPersona_OutputVariable.parameters/return/pers/edad</to>
+      <copy xml:id="id_23">
+        <from xml:id="id_24">'14'</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" xml:id="id_25">$replyOutput_checkPersona_OutputVariable.parameters/return/pers/edad</to>
       </copy>
     </assign>
     <!-- Generate reply to synchronous request -->
     <reply name="replyOutput" partnerLink="checkpersona_client" portType="ns1:servicioPersona" operation="checkPersona"
-           variable="replyOutput_checkPersona_OutputVariable"/>
+           variable="replyOutput_checkPersona_OutputVariable" xml:id="id_26"/>
   </sequence>
 </process>

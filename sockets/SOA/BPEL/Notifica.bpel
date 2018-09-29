@@ -28,7 +28,7 @@
          xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
          xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
          xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
-         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap">
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap" xml:id="id_1">
 
   <!-- 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -37,15 +37,15 @@
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   -->
   <import namespace="http://interfaces.example.soa.euge/" location="../WSDLs/servicioPersonaWrapper.wsdl"
-          importType="http://schemas.xmlsoap.org/wsdl/" ui:processWSDL="true"/>
-  <partnerLinks>
+          importType="http://schemas.xmlsoap.org/wsdl/" ui:processWSDL="true" xml:id="id_2"/>
+  <partnerLinks xml:id="id_3">
     <!-- 
       The 'client' role represents the requester of this service. It is 
       used for callback. The location and correlation information associated
       with the client role are automatically set using WS-Addressing.
     -->
-    <partnerLink name="notifica_client" partnerLinkType="ns1:Notifica" myRole="servicioPersona"/>
-    <partnerLink name="escribeNotificacion" partnerLinkType="ns2:Write_plt" partnerRole="Write_role"/>
+    <partnerLink name="notifica_client" partnerLinkType="ns1:Notifica" myRole="servicioPersona" xml:id="id_4"/>
+    <partnerLink name="escribeNotificacion" partnerLinkType="ns2:Write_plt" partnerRole="Write_role" xml:id="id_5"/>
   </partnerLinks>
 
   <!-- 
@@ -54,13 +54,13 @@
       List of messages and XML documents used within this BPEL process 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   -->
-  <variables>
+  <variables xml:id="id_6">
     <!-- Reference to the message passed as input during initiation -->
 
     <!-- Reference to the message that will be returned to the requester-->
-    <variable name="receiveInput_notifica_InputVariable" messageType="ns1:notificaInput"/>
-    <variable name="replyOutput_notifica_OutputVariable" messageType="ns1:notificaOutput"/>
-    <variable name="escribe_Write_InputVariable" messageType="ns2:Write_msg"/>
+    <variable name="receiveInput_notifica_InputVariable" messageType="ns1:notificaInput" xml:id="id_7"/>
+    <variable name="replyOutput_notifica_OutputVariable" messageType="ns1:notificaOutput" xml:id="id_8"/>
+    <variable name="escribe_Write_InputVariable" messageType="ns2:Write_msg" xml:id="id_9"/>
   </variables>
 
   <!-- 
@@ -70,25 +70,25 @@
      services integrated within this business process                  
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   -->
-  <sequence name="main">
+  <sequence name="main" xml:id="id_10">
 
     <!-- Receive input from requestor. (Note: This maps to operation defined in Notifica.wsdl) -->
     <receive name="receiveInput" partnerLink="notifica_client" portType="ns1:servicioPersona" operation="notifica"
-             variable="receiveInput_notifica_InputVariable" createInstance="yes"/>
-    <assign name="Assigna">
-      <copy>
-        <from>$receiveInput_notifica_InputVariable.parameters</from>
-        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$escribe_Write_InputVariable.body</to>
+             variable="receiveInput_notifica_InputVariable" createInstance="yes" xml:id="id_11"/>
+    <assign name="Assigna" xml:id="id_12">
+      <copy xml:id="id_13">
+        <from xml:id="id_14">$receiveInput_notifica_InputVariable.parameters</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" xml:id="id_15">$escribe_Write_InputVariable.body</to>
       </copy>
-      <copy>
-        <from>'Ok'</from>
-        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0">$replyOutput_notifica_OutputVariable.parameters/return</to>
+      <copy xml:id="id_16">
+        <from xml:id="id_17">'Ok'</from>
+        <to expressionLanguage="urn:oasis:names:tc:wsbpel:2.0:sublang:xpath1.0" xml:id="id_18">$replyOutput_notifica_OutputVariable.parameters/return</to>
       </copy>
     </assign>
     <invoke name="escribe" bpelx:invokeAsDetail="no" partnerLink="escribeNotificacion" portType="ns2:Write_ptt"
-            operation="Write" inputVariable="escribe_Write_InputVariable"/>
+            operation="Write" inputVariable="escribe_Write_InputVariable" xml:id="id_19"/>
     <!-- Generate reply to synchronous request -->
     <reply name="replyOutput" partnerLink="notifica_client" portType="ns1:servicioPersona" operation="notifica"
-           variable="replyOutput_notifica_OutputVariable"/>
+           variable="replyOutput_notifica_OutputVariable" xml:id="id_20"/>
   </sequence>
 </process>
